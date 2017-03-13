@@ -1,12 +1,12 @@
 from flask import Flask
 from flask import jsonify
-from guessit import guess_file_info
+from guessit import guessit
 
 app = Flask(__name__)
 
 @app.route("/guess/<filename>")
 def guess(filename):
-    guess = guess_file_info(filename)
+    guess = guessit(filename)
 
     # Country is not unicode, it makes the jsonify crash...
     # I don't need it anyway so let's remove it
