@@ -11,8 +11,7 @@ def guess(filename):
     # Country is a babelfish object and cannot be marshaled into JSON. We're
     # not using the country anyway so let's append the country to the title.
     # This also fixes wrong country match in the filename.
-    # e.g "Scandal.(US).S01E01.mp4" -> "Scanda US"
-    # e.g "This.is.us.S01E01.mp4"   -> "This is US"
+    # e.g "Scandal.(US).S01E01.mp4" -> "Scandal US"
     if 'country' in guess:
         guess['title'] += ' ' + str(guess['country'])
         del guess['country']
