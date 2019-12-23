@@ -12,8 +12,14 @@ def guess(filename):
     # not using the country anyway so let's append the country to the title.
     # This also fixes wrong country match in the filename.
     # e.g "Scandal.(US).S01E01.mp4" -> "Scandal US"
+    # e.g "Us (2019).mp4"           -> "US"
     if 'country' in guess:
-        guess['title'] += ' ' + str(guess['country'])
+        country = str(guess['country'])
+        if 'title' in guess:
+            guess['title'] += ' ' + country
+        else:
+            guess['title'] = country
+
         del guess['country']
 
     return jsonify(guess)
