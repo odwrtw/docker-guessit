@@ -8,6 +8,10 @@ app = Flask(__name__)
 def guess(filename):
     guess = guessit(filename)
 
+    # Remove the size
+    if 'size' in guess:
+        del guess['size']
+
     # Country is a babelfish object and cannot be marshaled into JSON. We're
     # not using the country anyway so let's append the country to the title.
     # This also fixes wrong country match in the filename.
